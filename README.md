@@ -1,1 +1,1 @@
-This is my personal website to show my project and wrote some article
+This is my personal website to show my project and wrote some article built using next  js
