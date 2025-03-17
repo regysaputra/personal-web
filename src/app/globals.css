@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1400px;
 }
 
 @theme inline {
@@ -10,17 +17,199 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebarRing);
+  --color-sidebar-border: var(--sidebarBorder);
+  --color-sidebar-accent-foreground: var(--sidebarAccentForeground);
+  --color-sidebar-accent: var(--sidebarAccent);
+  --color-sidebar-primary-foreground: var(--sidebarPrimaryForeground);
+  --color-sidebar-primary: var(--sidebarPrimary);
+  --color-sidebar-foreground: var(--sidebarForeground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive-foreground: var(--destructiveForeground);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accentForeground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--mutedForeground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondaryForeground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primaryForeground);
+  --color-primary: var(--primary);
+  --color-tertiery: var(--tertiery);
+  --color-popover-foreground: var(--popoverForeground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--cardForeground);
+  --color-card: var(--card);
+  --color-header-background: var(--headerBackground);
+  --color-badge-countup: var(--badgeCountup);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-tabs-trigger-foreground: var(--tabsTriggerForeground);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: oklch(from hsl(0 0% 100%) l c h);
+	--foreground: oklch(from hsl(20 14.3% 4.1%) l c h);
+	--card: oklch(from hsl(0 0% 100%) l c h);
+	--cardForeground: oklch(from hsl(20 14.3% 4.1%) l c h);
+	--popover: oklch(from hsl(0 0% 100%) l c h);
+	--popoverForeground: oklch(from hsl(20 14.3% 4.1%) l c h);
+	--primary: oklch(from hsl(24.6 95% 53.1%) l c h);
+	--primaryForeground: oklch(from hsl(60 9.1% 97.8%) l c h);
+	--secondary: oklch(from hsl(60 4.8% 95.9%) l c h);
+	--secondaryForeground: oklch(from hsl(24 9.8% 10%) l c h);
+  --tertiery: oklch(from hsl(27 82% 98%) l c h);
+	--muted: oklch(from hsl(60 4.8% 95.9%) l c h);
+	--mutedForeground: oklch(from hsl(25 5.3% 44.7%) l c h);
+	--accent: oklch(from hsl(60 4.8% 95.9%) l c h);
+	--accentForeground: oklch(from hsl(24 9.8% 10%) l c h);
+	--destructive: oklch(from hsl(0 84.2% 60.2%) l c h);
+	--destructiveForeground: oklch(from hsl(60 9.1% 97.8%) l c h);
+	--border: oklch(from hsl(20 5.9% 90%) l c h);
+	--input: oklch(from hsl(20 5.9% 90%) l c h);
+	--ring: oklch(from hsl(24.6 95% 53.1%) l c h);
+	--radius: 0.5rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebarForeground: oklch(0.141 0.005 285.823);
+  --sidebarPrimary: oklch(0.21 0.006 285.885);
+  --sidebarPrimaryForeground: oklch(0.985 0 0);
+  --sidebarAccent: oklch(0.967 0.001 286.375);
+  --sidebarAccentForeground: oklch(0.21 0.006 285.885);
+  --sidebarBorder: oklch(0.92 0.004 286.32);
+  --sidebarRing: oklch(0.705 0.015 286.067);
+  --headerBackground: oklch(0.985 0.02 0.61456);
+  --heroBackground: url('/hero/hero-bg-orange.png');
+  --heroShapeBackground: url('/hero/shape-1.svg');
+  --heroShape2: url('/hero/shape-2-light.svg');
+  --aboutShape: url('/about/shape-light.svg');
+  --badgeCountup: oklch(from hsl(24.6 95% 53.1%) l c h);
+  --dots: url('/dots-light.svg');
+  --tabsTriggerForeground: oklch(from hsl(0 0% 100%) l c h);
+  --workProjectBackground: url('/work/project-bg-light.png');
+  --contactIllustrationBackground: url('/contact/illustration-light.svg');
+}
+
+.dark {
+  --background: oklch(from hsl(20 14.3% 4.1%) l c h);
+	--foreground: oklch(from hsl(60 9.1% 97.8%) l c h);
+	--card: oklch(from hsl(20 14.3% 4.1%) l c h);
+	--cardForeground: oklch(from hsl(60 9.1% 97.8%) l c h);
+	--popover: oklch(from hsl(20 14.3% 4.1%) l c h);
+	--popoverForeground: oklch(from hsl(60 9.1% 97.8%) l c h);
+	--primary: oklch(from hsl(20.5 90.2% 48.2%) l c h);
+	--primaryForeground: oklch(from hsl(60 9.1% 97.8%) l c h);
+	--secondary: oklch(from hsl(12 6.5% 15.1%) l c h);
+	--secondaryForeground: oklch(from hsl(60 9.1% 97.8%) l c h);
+  --tertiery: oklch(from hsl(237 22% 20%) l c h);
+	--muted: oklch(from hsl(12 6.5% 15.1%) l c h);
+	--mutedForeground: oklch(from hsl(24 5.4% 63.9%) l c h);
+	--accent: oklch(from hsl(12 6.5% 15.1%) l c h);
+	--accentForeground: oklch(from hsl(60 9.1% 97.8%) l c h);
+	--destructive: oklch(from hsl(0 72.2% 50.6%) l c h);
+	--destructiveForeground: oklch(from hsl(60 9.1% 97.8%) l c h);
+	--border: oklch(from hsl(12 6.5% 15.1%) l c h);
+	--input: oklch(from hsl(12 6.5% 15.1%) l c h);
+	--ring: oklch(from hsl(20.5 90.2% 48.2%) l c h);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebarForeground: oklch(0.985 0 0);
+  --sidebarPrimary: oklch(0.488 0.243 264.376);
+  --sidebarPrimaryForeground: oklch(0.985 0 0);
+  --sidebarAccent: oklch(0.274 0.006 286.033);
+  --sidebarAccentForeground: oklch(0.985 0 0);
+  --sidebarBorder: oklch(0.274 0.006 286.033);
+  --sidebarRing: oklch(0.442 0.017 285.786);
+  --heroShapeBackground: url('/hero/shape-1.svg');
+  --heroShape2: url('/hero/shape-2-dark.svg');
+  --aboutShape: url('/about/shape-dark.svg');
+  --badgeCountup: oklch(from hsl(20.5 90.2% 48.2%) l c h);
+  --dots: url('/dots-dark.svg');
+  --tabsTriggerForeground: oklch(from hsl(0 0% 100%) l c h);
+  --workProjectBackground: url('/work/project-bg-dark.png');
+  --contactIllustrationBackground: url('/contact/illustration-light.svg');
+}
+
+.section-title {
+  @apply text-4xl font-bold relative w-max flex items-center justify-between gap-x-3;
+}
+
+.section-title::before {
+  @apply content-[''] w-[24px] h-[24px] bg-[image:var(--dots)] bg-no-repeat bg-center;
+}
+
+.subtitle {
+  @apply text-muted-foreground text-lg mb-8 font-light;
+}
+
+.bg-work-project {
+  background-image: var(--workProjectBackground);
+}
+
+.bg-contact-illustration {
+  background-image: var(--contactIllustrationBackground);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h3 {
+    @apply text-3xl font-bold;
+  }
+  h4 {
+    @apply text-[22px] font-semibold;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .bg-hero {
+    background-image: var(--heroBackground);
+  }
+  .bg-hero-shape {
+    background-image: var(--heroShapeBackground);
+  }
+  .bg-hero-shape2 {
+    background-image: var(--heroShape2);
+  }
+  .bg-about-shape {
+    background-image: var(--aboutShape);
+  }
+  .bg-dots {
+    background-image: var(--dots);
+  }
+  .bg-work-project {
+    background-image: var(--workProjectBackground);
+  }
+  .bg-contact-illustration-light {
+    background-image: url('/contact/illustration-dark.svg');
+  }
+  .bg-contact-illustration-dark {
+    background-image: url('/contact/illustration-dark.svg');
+  }
+  .headline {
+    @apply text-6xl xl:text-[72px] xl:leading-[80px] tracking-[-2px] font-bold mb-4;
+  }
+  .subheadline {
+    @apply text-muted-foreground text-lg mb-8 font-light max-w-[490px] mx-auto xl:mx-0;
+  }
+  .badge {
+    @apply z-10 w-[200px] bg-white dark:backdrop-blur-[44px] shadow-2xl p-4 rounded-[10px] flex items-center gap-x-4;
+  }
 }
